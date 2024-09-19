@@ -13,14 +13,19 @@ let mainArray = [];
 
 let pronouns = ["the", "our"];
 let adjs = ["great", "big", "last"];
-let nouns = ["jogger", "racoon", "of"];
-let tlds = [".com", ".me", ".ed", ".us"];
+let nouns = ["jogger", "racoon", "ofus", "cuentame", "puedes"];
+let extensions = ["com", "me", "es", "us"];
 
 pronouns.forEach(pronoun => {
   adjs.forEach(adj => {
     nouns.forEach(noun => {
-      tlds.forEach(tld => {
-        mainArray.push(`<li> ${pronoun}${adj}${noun}${tld} </li>`);
+      extensions.forEach(ext => {
+        mainArray.push(`<li> ${pronoun}${adj}${noun}.${ext} </li>`);
+        if (noun.endsWith(ext)) {
+          mainArray.push(
+            `<li> ${pronoun}${adj}${noun.slice(0, -2)}.${ext} </li>`
+          );
+        }
       });
     });
   });
